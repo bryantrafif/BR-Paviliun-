@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kos Nusantara Residence – Kos Rasa Apartemen</title>
+<meta name="description" content="Kos putri eksklusif dekat kampus & pusat kuliner. Cek kamar kosong, harga transparan, tur video, dan booking via WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary:#0f766e; --primary-d:#0b5a54; --accent:#f59e0b; --wa:#25d366;
+  --bg:#f8fafc; --card:#fff; --text:#0f172a; --muted:#64748b; --line:#e2e8f0;
+  --radius:16px; --shadow:0 10px 30px rgba(15,23,42,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:var(--text);background:var(--bg);line-height:1.6}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.container{width:min(1140px,92%);margin:0 auto}
+section{padding:72px 0}
+.sec-head{text-align:center;max-width:640px;margin:0 auto 40px}
+.sec-head h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;line-height:1.25}
+.sec-head p{color:var(--muted);margin-top:8px}
+.eyebrow{display:inline-block;color:var(--primary);font-weight:700;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 22px;border-radius:999px;font-weight:700;border:0;cursor:pointer;font-family:inherit;font-size:.95rem;transition:.2s}
+.btn-primary{background:var(--primary);color:#fff}.btn-primary:hover{background:var(--primary-d)}
+.btn-wa{background:var(--wa);color:#fff}.btn-wa:hover{filter:brightness(.93)}
+.btn-ghost{background:transparent;border:2px solid var(--line);color:var(--text)}.btn-ghost:hover{border-color:var(--primary);color:var(--primary)}
+.btn-block{width:100%}
+
+/* NAVBAR */
+header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.05rem}
+.logo-mark{width:36px;height:36px;border-radius:10px;background:var(--primary);color:#fff;display:grid;place-items:center}
+.badge-cat{font-size:.68rem;background:#ccfbf1;color:var(--primary-d);padding:2px 8px;border-radius:999px;font-weight:700}
+.menu{display:flex;gap:22px;font-weight:600;font-size:.92rem;color:var(--muted)}
+.menu a:hover{color:var(--primary)}
+.nav-actions{display:flex;gap:10px;align-items:center}
+.lang{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 12px;font-weight:700;cursor:pointer;font-family:inherit}
+.burger{display:none;background:none;border:0;font-size:1.6rem;cursor:pointer}
+@media(max-width:900px){
+  .menu{position:absolute;top:68px;left:0;right:0;background:#fff;flex-direction:column;padding:16px 4%;border-bottom:1px solid var(--line);display:none}
+  .menu.open{display:flex}
+  .burger{display:block}
+  .nav-actions .btn{display:none}
+}
+
+/* HERO */
+.hero{padding:0;position:relative;color:#fff;min-height:620px;display:flex;align-items:center;overflow:hidden}
+.slides{position:absolute;inset:0}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity 1s;background-size:cover;background-position:center}
+.slide.active{opacity:1}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(7,40,38,.88),rgba(7,40,38,.45))}
+.hero .container{position:relative;z-index:2;padding:80px 0}
+.hero h1{font-size:clamp(2rem,5vw,3.4rem);font-weight:800;line-height:1.15;max-width:680px}
+.hero p.sub{font-size:1.1rem;opacity:.92;margin:14px 0 28px;max-width:560px}
+.quick{background:#fff;color:var(--text);border-radius:20px;padding:18px;display:grid;grid-template-columns:1fr 1fr auto;gap:12px;max-width:760px;box-shadow:var(--shadow)}
+.quick label{font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+select,input,textarea{width:100%;padding:11px 12px;border:1.5px solid var(--line);border-radius:12px;font-family:inherit;font-size:.95rem;background:#fff;color:var(--text)}
+select:focus,input:focus,textarea:focus{outline:none;border-color:var(--primary)}
+.quick .btn{align-self:end}
+#quickResult{max-width:760px;margin-top:12px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.35);padding:12px 16px;border-radius:12px;display:none;font-weight:600}
+@media(max-width:720px){.quick{grid-template-columns:1fr}}
+
+/* VALUE PROPS */
+.vp{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.vp .card{padding:26px 22px;text-align:center}
+.ico{width:56px;height:56px;border-radius:16px;background:#ccfbf1;display:grid;place-items:center;font-size:1.6rem;margin:0 auto 14px}
+.card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--line)}
+.vp h3{font-size:1.02rem;margin-bottom:6px}.vp p{font-size:.88rem;color:var(--muted)}
+@media(max-width:900px){.vp{grid-template-columns:1fr 1fr}}@media(max-width:480px){.vp{grid-template-columns:1fr}}
+
+/* MEDIA */
+.video-wrap{position:relative;padding-top:56.25%;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);background:#000;max-width:880px;margin:0 auto 40px}
+.video-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:22px}
+.tab{padding:8px 18px;border-radius:999px;border:1.5px solid var(--line);background:#fff;font-weight:600;cursor:pointer;font-family:inherit;font-size:.88rem}
+.tab.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.g-item{aspect-ratio:4/3;border-radius:14px;display:grid;place-items:center;color:#fff;font-weight:700;text-align:center;padding:10px;font-size:.9rem;position:relative;overflow:hidden;background-size:cover;background-position:center}
+.g-item span{font-size:2rem;display:block}
+@media(max-width:800px){.gallery{grid-template-columns:1fr 1fr}}
+.pano-box{margin-top:48px}
+.pano{height:320px;border-radius:var(--radius);overflow:hidden;position:relative;cursor:grab;box-shadow:var(--shadow);background:#0b5a54;user-select:none;touch-action:pan-y}
+.pano:active{cursor:grabbing}
+.pano-inner{height:100%;width:300%;background:linear-gradient(90deg,#0f766e,#14b8a6 20%,#f59e0b 40%,#fb7185 60%,#6366f1 80%,#0f766e);display:flex;align-items:center;will-change:transform}
+.pano-inner div{flex:1;text-align:center;color:#fff;font-weight:800;font-size:1.3rem}
+.pano-hint{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.55);color:#fff;padding:6px 14px;border-radius:999px;font-size:.8rem;pointer-events:none}
+
+/* ROOMS */
+.rooms{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.room{overflow:hidden;display:flex;flex-direction:column;transition:.25s}
+.room.hl{outline:3px solid var(--accent);transform:translateY(-4px)}
+.room-img{height:170px;display:grid;place-items:center;font-size:3.4rem;position:relative}
+.status{position:absolute;top:12px;left:12px;font-size:.78rem;font-weight:800;padding:5px 12px;border-radius:999px;color:#fff}
+.status.ok{background:#16a34a}.status.full{background:#dc2626}
+.room-body{padding:20px;display:flex;flex-direction:column;gap:12px;flex:1}
+.room h3{font-size:1.25rem}
+.specs{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:6px 10px;font-size:.85rem;color:var(--muted)}
+.prices{background:#f1f5f9;border-radius:12px;padding:12px 14px;font-size:.88rem}
+.prices div{display:flex;justify-content:space-between;padding:3px 0}
+.prices .main b{font-size:1.15rem;color:var(--primary)}
+.save{color:#16a34a;font-weight:700;font-size:.78rem}
+.room-btns{display:flex;gap:8px;margin-top:auto}
+.room-btns .btn{flex:1;padding:10px 8px;font-size:.85rem}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+@media(max-width:960px){.rooms{grid-template-columns:1fr}}
+
+/* CALC */
+.calc{margin-top:40px;padding:28px;display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.calc h3{font-size:1.2rem;margin-bottom:12px}
+.chk{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:.92rem;cursor:pointer}
+.chk input{width:auto}
+.total{background:var(--primary);color:#fff;border-radius:var(--radius);padding:24px;display:flex;flex-direction:column;justify-content:center;gap:6px}
+.total .num{font-size:2.2rem;font-weight:800}
+.total small{opacity:.85}
+@media(max-width:800px){.calc{grid-template-columns:1fr}}
+
+/* FACILITIES */
+.fac-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:34px}
+.fac{padding:18px 10px;text-align:center;font-weight:600;font-size:.88rem}
+.fac span{font-size:1.8rem;display:block;margin-bottom:6px}
+@media(max-width:900px){.fac-grid{grid-template-columns:repeat(3,1fr)}}@media(max-width:480px){.fac-grid{grid-template-columns:1fr 1fr}}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.panel{padding:26px}
+.panel h3{margin-bottom:12px}
+.panel ul{list-style:none;display:grid;gap:9px;font-size:.93rem}
+.panel li::before{content:"✓";color:var(--primary);font-weight:800;margin-right:8px}
+.panel.rules li::before{content:"•"}
+@media(max-width:800px){.two{grid-template-columns:1fr}}
+
+/* MAP */
+.map-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:22px}
+.map-box{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);min-height:380px}
+.map-box iframe{width:100%;height:100%;min-height:380px;border:0}
+.poi{padding:24px;display:flex;flex-direction:column;gap:12px}
+.poi-item{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);font-size:.92rem}
+.poi-item b{color:var(--primary);white-space:nowrap}
+@media(max-width:860px){.map-grid{grid-template-columns:1fr}}
+
+/* TESTIMONI + FAQ */
+.testi{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:56px}
+.testi .card{padding:24px}
+.stars{color:var(--accent);letter-spacing:2px;margin-bottom:8px}
+.who{margin-top:14px;font-weight:700;font-size:.9rem}.who small{display:block;color:var(--muted);font-weight:500}
+@media(max-width:900px){.testi{grid-template-columns:1fr}}
+.faq{max-width:760px;margin:0 auto;display:grid;gap:10px}
+.faq-item{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.faq-q{width:100%;text-align:left;padding:16px 18px;background:none;border:0;font-family:inherit;font-weight:700;font-size:.98rem;cursor:pointer;display:flex;justify-content:space-between;gap:12px}
+.faq-q::after{content:"+";font-size:1.3rem;color:var(--primary);transition:.2s}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s;padding:0 18px;color:var(--muted);font-size:.93rem}
+.faq-item.open .faq-a{max-height:200px;padding-bottom:16px}
+
+/* CONTACT */
+.contact{background:linear-gradient(135deg,#0b5a54,#0f766e);color:#fff}
+.contact .sec-head p{color:#ccfbf1}
+.c-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:28px}
+.form{background:#fff;color:var(--text);border-radius:var(--radius);padding:26px;display:grid;gap:14px}
+.form label{font-size:.78rem;font-weight:700;color:var(--muted);display:block;margin-bottom:4px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.c-list{display:grid;gap:12px;align-content:start}
+.c-btn{display:flex;gap:14px;align-items:center;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);padding:16px 18px;border-radius:14px;font-weight:600;transition:.2s}
+.c-btn:hover{background:rgba(255,255,255,.22)}
+.c-btn small{display:block;font-weight:400;opacity:.85}
+@media(max-width:860px){.c-grid{grid-template-columns:1fr}}@media(max-width:480px){.row2{grid-template-columns:1fr}}
+
+footer{background:#052e2b;color:#99b8b4;text-align:center;padding:24px 0;font-size:.85rem}
+
+/* FLOATING */
+.float{position:fixed;right:16px;bottom:16px;z-index:60;display:flex;flex-direction:column;gap:10px}
+.float a{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;font-size:1.6rem;color:#fff;box-shadow:0 8px 20px rgba(0,0,0,.25)}
+.float .f-wa{background:var(--wa);animation:pulse 2s infinite}
+.float .f-tel{background:var(--primary)}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.6)}70%{box-shadow:0 0 0 16px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+
+/* MODAL */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:100;display:none;place-items:center;padding:16px}
+.modal.open{display:grid}
+.modal-box{background:#fff;border-radius:var(--radius);padding:24px;width:min(720px,100%);max-height:90vh;overflow:auto}
+.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.modal-close{background:none;border:0;font-size:1.6rem;cursor:pointer}
+.reveal{opacity:0;transform:translateY(24px);transition:.7s}.reveal.show{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<!-- 1. NAVIGASI -->
+<header>
+  <div class="container nav">
+    <a href="#beranda" class="logo">
+      <div class="logo-mark">🏠</div>
+      <div><span id="brandName">Kos Nusantara</span> <span class="badge-cat" id="brandCat">Kos Putri Eksklusif</span></div>
+    </a>
+    <nav class="menu" id="menu">
+      <a href="#beranda" data-i18n="nav_home">Beranda</a>
+      <a href="#tour" data-i18n="nav_tour">Video Tour</a>
+      <a href="#kamar" data-i18n="nav_rooms">Tipe Kamar</a>
+      <a href="#fasilitas" data-i18n="nav_fac">Fasilitas</a>
+      <a href="#lokasi" data-i18n="nav_loc">Lokasi</a>
+      <a href="#faq" data-i18n="nav_faq">FAQ</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="lang" id="langBtn" aria-label="Ganti bahasa">🌐 ID</button>
+      <a class="btn btn-wa" data-wa="Halo Admin, saya ingin bertanya tentang kamar kos." data-i18n="cta_ask">Tanya Admin (WA)</a>
+      <button class="burger" id="burger" aria-label="Menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<!-- 2. HERO -->
+<section class="hero" id="beranda">
+  <div class="slides" id="slides"></div>
+  <div class="container">
+    <h1 data-i18n="hero_title">Kos Rasa Apartemen, 3 Menit dari Kampus & Pusat Kuliner</h1>
+    <p class="sub" data-i18n="hero_sub">Bersih, aman, WiFi kencang, dan harga transparan tanpa biaya tersembunyi.</p>
+    <div class="quick">
+      <div><label data-i18n="q_type">Tipe Kamar</label><select id="qType"></select></div>
+      <div><label data-i18n="q_dur">Durasi Sewa</label>
+        <select id="qDur">
+          <option value="bulan" data-i18n="dur_m">Bulanan</option>
+          <option value="enam" data-i18n="dur_6">6 Bulanan</option>
+          <option value="tahun" data-i18n="dur_y">Tahunan</option>
+        </select></div>
+      <button class="btn btn-primary" id="qBtn" data-i18n="q_btn">Cek Harga & Ketersediaan</button>
+    </div>
+    <div id="quickResult"></div>
+  </div>
+</section>
+
+<!-- 3. KEUNGGULAN -->
+<section>
+  <div class="container vp reveal">
+    <div class="card"><div class="ico">🔐</div><h3 data-i18n="vp1_t">Bebas Banjir & Akses 24 Jam</h3><p data-i18n="vp1_d">Gerbang kunci mandiri / smart lock, masuk kapan saja.</p></div>
+    <div class="card"><div class="ico">📶</div><h3 data-i18n="vp2_t">WiFi Dedicated Cepat</h3><p data-i18n="vp2_d">Cocok untuk kuliah online dan WFH.</p></div>
+    <div class="card"><div class="ico">🚗</div><h3 data-i18n="vp3_t">Parkir Luas & Berkanopi</h3><p data-i18n="vp3_d">Aman dari hujan dan panas, dipantau CCTV.</p></div>
+    <div class="card"><div class="ico">🧹</div><h3 data-i18n="vp4_t">Tenang & Bersih</h3><p data-i18n="vp4_d">Petugas kebersihan rutin setiap hari.</p></div>
+  </div>
+</section>
+
+<!-- 4. VIRTUAL TOUR -->
+<section id="tour" style="background:#fff">
+  <div class="container">
+    <div class="sec-head reveal"><span class="eyebrow">Virtual Room Tour</span><h2 data-i18n="tour_h">Lihat Langsung Sebelum Datang</h2><p data-i18n="tour_p">Video walkthrough apa adanya dari gerbang hingga kamar mandi.</p></div>
+    <div class="video-wrap reveal"><iframe id="videoFrame" title="Video Tour Kos" allowfullscreen loading="lazy"></iframe></div>
+    <div class="tabs" id="galTabs"></div>
+    <div class="gallery" id="gallery"></div>
+
+    <div class="pano-box reveal">
+      <div class="sec-head" style="margin-bottom:18px"><h2 style="font-size:1.4rem" data-i18n="pano_h">Tur Virtual 360° (geser untuk melihat)</h2></div>
+      <div class="pano" id="pano">
+        <div class="pano-inner" id="panoInner">
+          <div>🛏️ Kamar Tidur</div><div>🚿 Kamar Mandi</div><div>🍳 Dapur Bersama</div>
+        </div>
+        <div class="pano-hint">⟷ Geser / Drag</div>
+      </div>
+      <p style="color:var(--muted);font-size:.82rem;margin-top:8px">Ganti dengan foto panorama 360° asli: ubah <code>CONFIG.panoImage</code> di bagian script.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 5. KATALOG KAMAR -->
+<section id="kamar">
+  <div class="container">
+    <div class="sec-head reveal"><span class="eyebrow">Katalog</span><h2 data-i18n="room_h">Tipe Kamar, Harga & Status Real-Time</h2><p data-i18n="room_p">Harga jelas, tidak ada biaya tersembunyi.</p></div>
+    <div class="rooms" id="roomGrid"></div>
+
+    <div class="card calc reveal">
+      <div>
+        <h3 data-i18n="calc_h">🧮 Kalkulator Estimasi Biaya</h3>
+        <label style="font-size:.78rem;font-weight:700;color:var(--muted)" data-i18n="q_type">Tipe Kamar</label>
+        <select id="cType" style="margin-bottom:10px"></select>
+        <div id="cExtras"></div>
+      </div>
+      <div class="total">
+        <small data-i18n="calc_total">Estimasi total per bulan</small>
+        <div class="num" id="cTotal">Rp 0</div>
+        <small id="cNote"></small>
+        <button class="btn btn-wa" id="cBook" style="margin-top:14px" data-i18n="calc_book">Booking dengan Estimasi Ini</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. FASILITAS -->
+<section id="fasilitas" style="background:#fff">
+  <div class="container">
+    <div class="sec-head reveal"><span class="eyebrow">Fasilitas</span><h2 data-i18n="fac_h">Fasilitas Bersama, Keamanan & Tata Tertib</h2></div>
+    <div class="fac-grid reveal">
+      <div class="card fac"><span>📶</span>WiFi</div>
+      <div class="card fac"><span>🍳</span>Dapur Umum</div>
+      <div class="card fac"><span>👕</span>Ruang Jemur</div>
+      <div class="card fac"><span>🛋️</span>Ruang Tamu/Belajar</div>
+      <div class="card fac"><span>🧺</span>Mesin Cuci</div>
+    </div>
+    <div class="two reveal">
+      <div class="card panel">
+        <h3>🛡️ <span data-i18n="sec_h">Sistem Keamanan</span></h3>
+        <ul>
+          <li>CCTV 24 jam (dapat dipantau)</li>
+          <li>Penjaga kos / petugas</li>
+          <li>APAR (alat pemadam api ringan)</li>
+          <li>Penerangan otomatis</li>
+          <li>Smart lock gerbang</li>
+        </ul>
+      </div>
+      <div class="card panel rules">
+        <h3>📋 <span data-i18n="rule_h">Ringkasan Peraturan Kos</span></h3>
+        <ul>
+          <li><b>Tamu:</b> berkunjung 08.00–21.00, tamu menginap tidak diperkenankan</li>
+          <li><b>Hewan peliharaan:</b> tidak diperbolehkan</li>
+          <li><b>Merokok:</b> hanya di area luar yang ditentukan</li>
+          <li><b>Pembayaran:</b> jatuh tempo setiap tanggal masuk, transfer / tunai</li>
+          <li><b>Ketenangan:</b> jam tenang pukul 22.00–05.00</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. LOKASI -->
+<section id="lokasi">
+  <div class="container">
+    <div class="sec-head reveal"><span class="eyebrow">Lokasi</span><h2 data-i18n="loc_h">Strategis & Mudah Dijangkau</h2><p id="alamat"></p></div>
+    <div class="map-grid reveal">
+      <div class="map-box"><iframe id="mapFrame" title="Peta Lokasi" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+      <div class="card poi">
+        <h3 data-i18n="poi_h">Jarak ke Lokasi Penting</h3>
+        <div class="poi-item"><span>🎓 Kampus / Perkantoran</span><b>3 mnt (800 m)</b></div>
+        <div class="poi-item"><span>🏪 Minimarket & ATM</span><b>1 mnt (200 m)</b></div>
+        <div class="poi-item"><span>🍛 Sentra Kuliner & Laundry</span><b>2 mnt (350 m)</b></div>
+        <div class="poi-item"><span>🏥 RS/Klinik & Halte</span><b>5 mnt (1,5 km)</b></div>
+        <a class="btn btn-primary btn-block" id="routeBtn" target="_blank" rel="noopener" data-i18n="route_btn">Buka Rute di Google Maps</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. TESTIMONI & FAQ -->
+<section id="faq" style="background:#fff">
+  <div class="container">
+    <div class="sec-head reveal"><span class="eyebrow">Testimoni</span><h2 data-i18n="testi_h">Kata Penghuni</h2></div>
+    <div class="testi reveal">
+      <div class="card"><div class="stars">★★★★★</div><p>“Kamarnya bersih, WiFi kencang banget buat kuliah online. Ibu kos ramah dan responsif.”</p><div class="who">Aulia R.<small>Mahasiswi, penghuni 2 tahun</small></div></div>
+      <div class="card"><div class="stars">★★★★★</div><p>“Orang tua tenang karena ada CCTV dan penjaga. Dekat kampus, jalan kaki saja.”</p><div class="who">Dinda P.<small>Mahasiswi, penghuni 1 tahun</small></div></div>
+      <div class="card"><div class="stars">★★★★☆</div><p>“Harga sesuai fasilitas, tidak ada biaya tambahan tersembunyi. Parkir juga luas.”</p><div class="who">Maya S.<small>Karyawan, penghuni 8 bulan</small></div></div>
+    </div>
+    <div class="sec-head reveal"><h2 data-i18n="faq_h">Pertanyaan yang Sering Diajukan</h2></div>
+    <div class="faq reveal" id="faqList"></div>
+  </div>
+</section>
+
+<!-- 9. SURVEI & KONTAK -->
+<section class="contact" id="kontak">
+  <div class="container">
+    <div class="sec-head reveal"><span class="eyebrow" style="color:#5eead4">Booking</span><h2 data-i18n="c_h">Jadwalkan Survei atau Video Call</h2><p data-i18n="c_p">Isi formulir singkat, kami lanjutkan lewat WhatsApp.</p></div>
+    <div class="c-grid">
+      <form class="form" id="surveyForm">
+        <div><label>Nama</label><input id="fName" required placeholder="Nama lengkap"></div>
+        <div class="row2">
+          <div><label>Nomor WhatsApp</label><input id="fWa" type="tel" required placeholder="08xxxxxxxxxx"></div>
+          <div><label>Tipe Kamar</label><select id="fType"></select></div>
+        </div>
+        <div class="row2">
+          <div><label>Tanggal Survei</label><input id="fDate" type="date" required></div>
+          <div><label>Jam</label><input id="fTime" type="time" required value="10:00"></div>
+        </div>
+        <div><label>Metode</label>
+          <select id="fMode"><option>Survei langsung ke lokasi</option><option>Video call</option></select></div>
+        <button class="btn btn-wa btn-block" type="submit" data-i18n="c_send">Kirim Jadwal via WhatsApp</button>
+      </form>
+      <div class="c-list">
+        <a class="c-btn" id="cTel">📞 <div>Telepon Pengelola<small id="telTxt"></small></div></a>
+        <a class="c-btn" id="cWa1" target="_blank" rel="noopener">💬 <div>WhatsApp Admin 1<small>Respon cepat</small></div></a>
+        <a class="c-btn" id="cWa2" target="_blank" rel="noopener">💬 <div>WhatsApp Admin 2<small>Respon cepat</small></div></a>
+        <a class="c-btn" id="cMail">✉️ <div>Email<small id="mailTxt"></small></div></a>
+        <a class="c-btn" id="cIg" target="_blank" rel="noopener">📸 <div>Instagram<small>Update harian kos</small></div></a>
+        <a class="c-btn" id="cTt" target="_blank" rel="noopener">🎵 <div>TikTok<small>Video tur & kegiatan</small></div></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="container">© <span id="yr"></span> <span id="ftName"></span>. Semua hak dilindungi.</div></footer>
+
+<!-- FLOATING -->
+<div class="float">
+  <a class="f-wa" id="fWaBtn" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+  <a class="f-tel" id="fTelBtn" aria-label="Telepon">📞</a>
+</div>
+
+<!-- MODAL DETAIL FOTO -->
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <div class="modal-head"><h3 id="mTitle"></h3><button class="modal-close" id="mClose" aria-label="Tutup">×</button></div>
+    <div class="gallery" id="mGallery" style="grid-template-columns:1fr 1fr"></div>
+  </div>
+</div>
+
+<script>
+/* ============ KONFIGURASI – EDIT BAGIAN INI ============ */
+const CONFIG = {
+  nama: "Kos Nusantara Residence",
+  kategori: "Kos Putri Eksklusif",
+  wa1: "6281234567890",           // format internasional tanpa + atau 0 di depan
+  wa2: "6281234567891",
+  telp: "081234567890",
+  email: "info@kosnusantara.id",
+  instagram: "https://instagram.com/kosnusantara",
+  tiktok: "https://tiktok.com/@kosnusantara",
+  alamat: "Jl. Contoh No. 12, Kelurahan Anda, Kota Anda",
+  mapsQuery: "Jl. Contoh No. 12",  // atau alamat/koordinat sebenarnya
+  mapsLink: "https://www.google.com/maps/search/?api=1&query=Jl.+Contoh+No.+12",
+  videoEmbed: "https://www.youtube.com/embed/dQw4w9WgXcQ", // ganti dengan ID video tur kos Anda
+  panoImage: "",                   // URL foto panorama 360° (opsional)
+  heroImages: [],                  // isi URL foto hero; kosong = gradien bawaan
+  rooms: [
+    { id:"standar", nama:"Standar", emoji:"🛏️", warna:"linear-gradient(135deg,#14b8a6,#0f766e)", ukuran:"3 × 3 m", kasur:"Single bed", ac:"Kipas angin", km:"Kamar mandi luar", listrik:"Termasuk", bulan:900000, enam:5100000, tahun:9600000, deposit:300000, sisa:3 },
+    { id:"vip", nama:"VIP", emoji:"❄️", warna:"linear-gradient(135deg,#f59e0b,#d97706)", ukuran:"3 × 4 m", kasur:"Queen bed", ac:"AC", km:"Kamar mandi dalam", listrik:"Termasuk", bulan:1500000, enam:8400000, tahun:16000000, deposit:500000, sisa:2 },
+    { id:"eksklusif", nama:"Eksklusif", emoji:"👑", warna:"linear-gradient(135deg,#6366f1,#4338ca)", ukuran:"4 × 4 m", kasur:"King bed", ac:"AC + water heater", km:"Kamar mandi dalam", listrik:"Token terpisah", bulan:2200000, enam:12300000, tahun:23500000, deposit:1000000, sisa:0 }
+  ],
+  extras: [
+    { id:"kulkas", label:"Membawa kulkas mini", harga:50000 },
+    { id:"mobil", label:"Parkir mobil", harga:150000 },
+    { id:"berdua", label:"Sewa berdua", harga:300000 },
+    { id:"laundry", label:"Paket laundry bulanan", harga:120000 }
+  ],
+  faq: [
+    ["Apakah harga sewa sudah termasuk listrik dan air?","Air sudah termasuk di semua tipe. Listrik termasuk untuk tipe Standar dan VIP; tipe Eksklusif memakai token listrik terpisah."],
+    ["Bagaimana sistem pembayaran dan uang jaminan (deposit)?","Pembayaran lewat transfer atau tunai, jatuh tempo setiap tanggal masuk. Deposit dikembalikan penuh saat check-out jika tidak ada kerusakan."],
+    ["Apakah boleh membawa kendaraan roda empat / mobil?","Boleh. Tersedia parkir mobil berkanopi dengan biaya tambahan per bulan (lihat kalkulator biaya)."],
+    ["Apakah teman atau keluarga boleh berkunjung?","Boleh, jam bertamu 08.00–21.00 di ruang tamu. Tamu menginap tidak diperkenankan."]
+  ],
+  galeri: [
+    ["Kamar Tidur","🛏️","#0f766e"],["Kamar Tidur","🪟","#14b8a6"],
+    ["Kamar Mandi","🚿","#6366f1"],["Kamar Mandi","🛁","#4f46e5"],
+    ["Dapur & Ruang Santai","🍳","#f59e0b"],["Dapur & Ruang Santai","🛋️","#d97706"],
+    ["Area Parkir","🚗","#475569"],["Area Parkir","🏍️","#334155"]
+  ]
+};
+
+/* ============ TERJEMAHAN ID / EN ============ */
+const I18N = {
+  id:{nav_home:"Beranda",nav_tour:"Video Tour",nav_rooms:"Tipe Kamar",nav_fac:"Fasilitas",nav_loc:"Lokasi",nav_faq:"FAQ",cta_ask:"Tanya Admin (WA)",
+    hero_title:"Kos Rasa Apartemen, 3 Menit dari Kampus & Pusat Kuliner",hero_sub:"Bersih, aman, WiFi kencang, dan harga transparan tanpa biaya tersembunyi.",
+    q_type:"Tipe Kamar",q_dur:"Durasi Sewa",q_btn:"Cek Harga & Ketersediaan",dur_m:"Bulanan",dur_6:"6 Bulanan",dur_y:"Tahunan",
+    vp1_t:"Bebas Banjir & Akses 24 Jam",vp1_d:"Gerbang kunci mandiri / smart lock, masuk kapan saja.",vp2_t:"WiFi Dedicated Cepat",vp2_d:"Cocok untuk kuliah online dan WFH.",
+    vp3_t:"Parkir Luas & Berkanopi",vp3_d:"Aman dari hujan dan panas, dipantau CCTV.",vp4_t:"Tenang & Bersih",vp4_d:"Petugas kebersihan rutin setiap hari.",
+    tour_h:"Lihat Langsung Sebelum Datang",tour_p:"Video walkthrough apa adanya dari gerbang hingga kamar mandi.",pano_h:"Tur Virtual 360° (geser untuk melihat)",
+    room_h:"Tipe Kamar, Harga & Status Real-Time",room_p:"Harga jelas, tidak ada biaya tersembunyi.",calc_h:"🧮 Kalkulator Estimasi Biaya",calc_total:"Estimasi total per bulan",calc_book:"Booking dengan Estimasi Ini",
+    fac_h:"Fasilitas Bersama, Keamanan & Tata Tertib",sec_h:"Sistem Keamanan",rule_h:"Ringkasan Peraturan Kos",loc_h:"Strategis & Mudah Dijangkau",poi_h:"Jarak ke Lokasi Penting",route_btn:"Buka Rute di Google Maps",
+    testi_h:"Kata Penghuni",faq_h:"Pertanyaan yang Sering Diajukan",c_h:"Jadwalkan Survei atau Video Call",c_p:"Isi formulir singkat, kami lanjutkan lewat WhatsApp.",c_send:"Kirim Jadwal via WhatsApp"},
+  en:{nav_home:"Home",nav_tour:"Video Tour",nav_rooms:"Rooms",nav_fac:"Facilities",nav_loc:"Location",nav_faq:"FAQ",cta_ask:"Chat Admin (WA)",
+    hero_title:"Apartment-Style Boarding House, 3 Minutes from Campus & Food Street",hero_sub:"Clean, safe, fast WiFi, and transparent pricing with no hidden fees.",
+    q_type:"Room Type",q_dur:"Rental Period",q_btn:"Check Price & Availability",dur_m:"Monthly",dur_6:"6 Months",dur_y:"Yearly",
+    vp1_t:"Flood-Free & 24h Access",vp1_d:"Self-lock gate / smart lock, come and go anytime.",vp2_t:"Fast Dedicated WiFi",vp2_d:"Great for online classes and WFH.",
+    vp3_t:"Spacious Covered Parking",vp3_d:"Protected from rain and heat, CCTV monitored.",vp4_t:"Quiet & Clean",vp4_d:"Daily cleaning staff.",
+    tour_h:"See It Before You Visit",tour_p:"Unedited walkthrough from the gate to the bathroom.",pano_h:"360° Virtual Tour (drag to look around)",
+    room_h:"Room Types, Prices & Live Status",room_p:"Clear pricing, no hidden costs.",calc_h:"🧮 Cost Estimator",calc_total:"Estimated total per month",calc_book:"Book with This Estimate",
+    fac_h:"Shared Facilities, Security & House Rules",sec_h:"Security System",rule_h:"House Rules Summary",loc_h:"Strategic & Easy to Reach",poi_h:"Distance to Key Places",route_btn:"Open Route in Google Maps",
+    testi_h:"What Residents Say",faq_h:"Frequently Asked Questions",c_h:"Schedule a Visit or Video Call",c_p:"Fill in the short form and we'll continue on WhatsApp.",c_send:"Send Schedule via WhatsApp"}
+};
+
+/* ============ UTIL ============ */
+const $ = s => document.querySelector(s);
+const rp = n => "Rp " + Number(n).toLocaleString("id-ID");
+const waLink = (num, text) => `https://wa.me/${num}?text=${encodeURIComponent(text)}`;
+const durLabel = {bulan:"Bulanan", enam:"6 Bulanan", tahun:"Tahunan"};
+const R = id => CONFIG.rooms.find(r => r.id === id);
+
+/* ============ ISI KONFIGURASI KE HALAMAN ============ */
+$("#brandName").textContent = CONFIG.nama;
+$("#brandCat").textContent = CONFIG.kategori;
+$("#ftName").textContent = CONFIG.nama;
+$("#yr").textContent = new Date().getFullYear();
+$("#alamat").textContent = CONFIG.alamat;
+$("#videoFrame").src = CONFIG.videoEmbed;
+$("#mapFrame").src = "https://www.google.com/maps?q=" + encodeURIComponent(CONFIG.mapsQuery) + "&output=embed";
+$("#routeBtn").href = CONFIG.mapsLink;
+$("#cTel").href = "tel:" + CONFIG.telp; $("#fTelBtn").href = "tel:" + CONFIG.telp; $("#telTxt").textContent = CONFIG.telp;
+$("#cWa1").href = waLink(CONFIG.wa1, "Halo Admin 1, saya ingin bertanya tentang kos."); 
+$("#cWa2").href = waLink(CONFIG.wa2, "Halo Admin 2, saya ingin bertanya tentang kos.");
+$("#fWaBtn").href = waLink(CONFIG.wa1, "Halo, saya tertarik dengan kos Anda.");
+$("#cMail").href = "mailto:" + CONFIG.email; $("#mailTxt").textContent = CONFIG.email;
+$("#cIg").href = CONFIG.instagram; $("#cTt").href = CONFIG.tiktok;
+document.querySelectorAll("[data-wa]").forEach(el => { el.href = waLink(CONFIG.wa1, el.dataset.wa); el.target = "_blank"; el.rel = "noopener"; });
+
+/* Pilihan tipe kamar (hero, kalkulator, form) */
+const typeOpts = CONFIG.rooms.map(r => `<option value="${r.id}">${r.nama}</option>`).join("");
+["#qType","#cType","#fType"].forEach(s => $(s).innerHTML = typeOpts);
+
+/* ============ HERO SLIDER ============ */
+const grads = ["linear-gradient(135deg,#0f766e,#134e4a)","linear-gradient(135deg,#0e7490,#164e63)","linear-gradient(135deg,#047857,#064e3b)"];
+const slideSrc = CONFIG.heroImages.length ? CONFIG.heroImages.map(u => `url('${u}')`) : grads;
+$("#slides").innerHTML = slideSrc.map((s,i) => `<div class="slide ${i===0?'active':''}" style="background-image:${s}"></div>`).join("");
+let si = 0; setInterval(() => {
+  const sl = document.querySelectorAll(".slide"); if (sl.length < 2) return;
+  sl[si].classList.remove("active"); si = (si+1) % sl.length; sl[si].classList.add("active");
+}, 5000);
+
+/* ============ KATALOG KAMAR ============ */
+function renderRooms(){
+  $("#roomGrid").innerHTML = CONFIG.rooms.map(r => {
+    const full = r.sisa <= 0;
+    const hemat6 = r.bulan*6 - r.enam, hematY = r.bulan*12 - r.tahun;
+    return `<article class="card room reveal" id="room-${r.id}">
+      <div class="room-img" style="background:${r.warna}">${r.emoji}
+        <span class="status ${full?'full':'ok'}">${full ? 'Penuh' : 'Tersedia ' + r.sisa + ' Kamar'}</span></div>
+      <div class="room-body">
+        <h3>${r.nama}</h3>
+        <ul class="specs"><li>📐 ${r.ukuran}</li><li>🛏️ ${r.kasur}</li><li>❄️ ${r.ac}</li><li>🚿 ${r.km}</li><li>⚡ Listrik: ${r.listrik}</li></ul>
+        <div class="prices">
+          <div class="main"><span>Bulanan</span><b>${rp(r.bulan)}</b></div>
+          <div><span>6 Bulan</span><span>${rp(r.enam)} <span class="save">hemat ${rp(hemat6)}</span></span></div>
+          <div><span>Tahunan</span><span>${rp(r.tahun)} <span class="save">hemat ${rp(hematY)}</span></span></div>
+          <div><span>Deposit</span><span>${r.deposit ? rp(r.deposit) : 'Tanpa deposit'}</span></div>
+        </div>
+        <div class="room-btns">
+          <button class="btn btn-ghost" onclick="openModal('${r.id}')">Lihat Detail Foto</button>
+          <button class="btn btn-wa" ${full?'disabled':''} onclick="bookRoom('${r.id}')">Booking Kamar Ini</button>
+        </div>
+      </div></article>`;
+  }).join("");
+  observeReveal();
+}
+function bookRoom(id, dur="bulan"){
+  const r = R(id);
+  const msg = `Halo Admin, saya ingin booking kamar tipe ${r.nama} (${durLabel[dur]}, ${rp(r[dur])}). Apakah masih tersedia?`;
+  window.open(waLink(CONFIG.wa1, msg), "_blank");
+}
+
+/* ============ QUICK SEARCH ============ */
+$("#qBtn").addEventListener("click", () => {
+  const r = R($("#qType").value), d = $("#qDur").value;
+  const box = $("#quickResult");
+  const stat = r.sisa > 0 ? `✅ Tersedia ${r.sisa} kamar` : `❌ Saat ini penuh – hubungi admin untuk daftar tunggu`;
+  box.style.display = "block";
+  box.innerHTML = `${r.nama} • ${durLabel[d]}: <b>${rp(r[d])}</b> • ${stat} • <a href="#room-${r.id}" style="text-decoration:underline">Lihat detail</a>`;
+  document.querySelectorAll(".room").forEach(e => e.classList.remove("hl"));
+  const t = $("#room-" + r.id); t.classList.add("hl");
+  setTimeout(() => t.classList.remove("hl"), 3500);
+});
+
+/* ============ KALKULATOR BIAYA ============ */
+$("#cExtras").innerHTML = CONFIG.extras.map(e =>
+  `<label class="chk"><input type="checkbox" value="${e.id}"> <span style="flex:1">${e.label}</span><b>+${rp(e.harga)}</b></label>`).join("");
+function calc(){
+  const r = R($("#cType").value);
+  let total = r.bulan, picked = [];
+  document.querySelectorAll("#cExtras input:checked").forEach(c => {
+    const e = CONFIG.extras.find(x => x.id === c.value); total += e.harga; picked.push(e.label);
+  });
+  $("#cTotal").textContent = rp(total);
+  $("#cNote").textContent = `Dasar ${r.nama}: ${rp(r.bulan)}` + (picked.length ? " + " + picked.join(", ") : "") + (r.deposit ? ` • Deposit ${rp(r.deposit)} (sekali bayar)` : "");
+  return {r, total, picked};
+}
+$("#cType").addEventListener("change", calc);
+$("#cExtras").addEventListener("change", calc);
+$("#cBook").addEventListener("click", () => {
+  const {r, total, picked} = calc();
+  const msg = `Halo Admin, saya ingin booking kamar ${r.nama}` + (picked.length ? ` dengan tambahan: ${picked.join(", ")}` : "") + `. Estimasi total per bulan ${rp(total)}. Mohon info ketersediaan.`;
+  window.open(waLink(CONFIG.wa1, msg), "_blank");
+});
+
+/* ============ GALERI + FILTER ============ */
+const cats = ["Semua Foto", ...new Set(CONFIG.galeri.map(g => g[0]))];
+$("#galTabs").innerHTML = cats.map((c,i) => `<button class="tab ${i===0?'active':''}" data-c="${c}">${c}</button>`).join("");
+function renderGallery(cat){
+  $("#gallery").innerHTML = CONFIG.galeri.filter(g => cat==="Semua Foto" || g[0]===cat)
+    .map(g => `<div class="g-item" style="background-color:${g[2]}"><div><span>${g[1]}</span>${g[0]}</div></div>`).join("");
+}
+$("#galTabs").addEventListener("click", e => {
+  const b = e.target.closest(".tab"); if (!b) return;
+  document.querySelectorAll(".tab").forEach(t => t.classList.remove("active")); b.classList.add("active");
+  renderGallery(b.dataset.c);
+});
+renderGallery("Semua Foto");
+
+/* ============ MODAL DETAIL FOTO ============ */
+function openModal(id){
+  const r = R(id);
+  $("#mTitle").textContent = "Kamar " + r.nama;
+  const labels = ["Tempat Tidur","Meja & Lemari","Kamar Mandi","Jendela & Pencahayaan"];
+  $("#mGallery").innerHTML = labels.map((l,i) => `<div class="g-item" style="background:${r.warna}"><div><span>${["🛏️","🗄️","🚿","🪟"][i]}</span>${l}</div></div>`).join("");
+  $("#modal").classList.add("open");
+}
+$("#mClose").onclick = () => $("#modal").classList.remove("open");
+$("#modal").addEventListener("click", e => { if (e.target.id === "modal") $("#modal").classList.remove("open"); });
+document.addEventListener("keydown", e => { if (e.key === "Escape") $("#modal").classList.remove("open"); });
+
+/* ============ PANORAMA 360° (drag) ============ */
+(function(){
+  const box = $("#pano"), inner = $("#panoInner");
+  if (CONFIG.panoImage){ inner.style.background = `url('${CONFIG.panoImage}') center/cover`; inner.innerHTML = ""; }
+  let x = 0, startX = 0, startOff = 0, drag = false;
+  const max = () => inner.offsetWidth - box.offsetWidth;
+  const clamp = v => Math.max(-max(), Math.min(0, v));
+  const down = e => { drag = true; startX = (e.touches ? e.touches[0].clientX : e.clientX); startOff = x; };
+  const move = e => { if (!drag) return; const cx = (e.touches ? e.touches[0].clientX : e.clientX); x = clamp(startOff + (cx - startX)); inner.style.transform = `translateX(${x}px)`; };
+  const up = () => drag = false;
+  box.addEventListener("mousedown", down); window.addEventListener("mousemove", move); window.addEventListener("mouseup", up);
+  box.addEventListener("touchstart", down, {passive:true}); box.addEventListener("touchmove", move, {passive:true}); box.addEventListener("touchend", up);
+})();
+
+/* ============ FAQ ACCORDION ============ */
+$("#faqList").innerHTML = CONFIG.faq.map(([q,a]) =>
+  `<div class="faq-item"><button class="faq-q">${q}</button><div class="faq-a">${a}</div></div>`).join("");
+$("#faqList").addEventListener("click", e => {
+  const b = e.target.closest(".faq-q"); if (!b) return;
+  b.parentElement.classList.toggle("open");
+});
+
+/* ============ FORM SURVEI -> WHATSAPP ============ */
+const today = new Date().toISOString().split("T")[0];
+$("#fDate").min = today; $("#fDate").value = today;
+$("#surveyForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const r = R($("#fType").value);
+  const tgl = new Date($("#fDate").value).toLocaleDateString("id-ID", {weekday:"long", day:"numeric", month:"long", year:"numeric"});
+  const msg = `Halo Admin, saya ingin menjadwalkan ${$("#fMode").value.toLowerCase()}.\n\nNama: ${$("#fName").value}\nWhatsApp: ${$("#fWa").value}\nTipe kamar: ${r.nama}\nTanggal: ${tgl}\nJam: ${$("#fTime").value} WIB\n\nTerima kasih.`;
+  window.open(waLink(CONFIG.wa1, msg), "_blank");
+});
+
+/* ============ NAVBAR, BAHASA, ANIMASI ============ */
+$("#burger").onclick = () => $("#menu").classList.toggle("open");
+document.querySelectorAll("#menu a").forEach(a => a.addEventListener("click", () => $("#menu").classList.remove("open")));
+let lang = "id";
+$("#langBtn").addEventListener("click", () => {
+  lang = lang === "id" ? "en" : "id";
+  $("#langBtn").textContent = "🌐 " + lang.toUpperCase();
+  document.documentElement.lang = lang;
+  document.querySelectorAll("[data-i18n]").forEach(el => { const t = I18N[lang][el.dataset.i18n]; if (t) el.textContent = t; });
+});
+let io;
+function observeReveal(){
+  if (!io) io = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting){ en.target.classList.add("show"); io.unobserve(en.target); } }), {threshold:.12});
+  document.querySelectorAll(".reveal:not(.show)").forEach(el => io.observe(el));
+}
+
+renderRooms(); calc(); observeReveal();
+</script>
+</body>
+</html>
