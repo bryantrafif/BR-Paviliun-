@@ -413,7 +413,8 @@ const CONFIG = {
   tiktok: "https://tiktok.com/@kosnusantara",
   alamat: "Jl. Contoh No. 12, Kelurahan Anda, Kota Anda",
   mapsQuery: "Jl. Contoh No. 12",  // atau alamat/koordinat sebenarnya
-  mapsLink: "https://www.google.com/maps/search/?api=1&query=Jl.+Contoh+No.+12",
+  mapsLink: "https://www.google.com/maps/place/PAVILIUN+BRYANT/@-7.7530733,110.3560153,17.61z/data=!4m6!3m5!1s0x2e7a59ac16e72f29:0xd63352789cba7074!8m2!3d-7.7550299!4d110.3562119!16s%2Fg%2F11vb__ywq9?entry=ttu&g_ep=EgoyMDI2MTExMC4wIKXMDSoASAFQAw%3D%3D",
+  mapsLink: "https://www.google.com/maps/place/Paviliun+Arif+Romdhon/@-7.7560213,110.3554467,21z/data=!4m6!3m5!1s0x2e7a585ff07b83cb:0x5f749f2ba543333b!8m2!3d-7.7559051!4d110.3555642!16s%2Fg%2F11g6qt2lf0?entry=ttu&g_ep=EgoyMDI2MTExMC4wIKXMDSoASAFQAw%3D%3D,
   videoEmbed: "https://www.youtube.com/embed/dQw4w9WgXcQ", // ganti dengan ID video tur kos Anda
   panoImage: "",                   // URL foto panorama 360° (opsional)
   heroImages: [],                  // isi URL foto hero; kosong = gradien bawaan
@@ -478,7 +479,7 @@ $("#ftName").textContent = CONFIG.nama;
 $("#yr").textContent = new Date().getFullYear();
 $("#alamat").textContent = CONFIG.alamat;
 $("#videoFrame").src = CONFIG.videoEmbed;
-$("#mapFrame").src = "https://www.google.com/maps?q=" + encodeURIComponent(CONFIG.mapsQuery) + "&output=embed";
+$("#mapFrame").src = "https://www.google.com/maps/place/Paviliun+Arif+Romdhon/@-7.7560213,110.3554467,21z/data=!4m6!3m5!1s0x2e7a585ff07b83cb:0x5f749f2ba543333b!8m2!3d-7.7559051!4d110.3555642!16s%2Fg%2F11g6qt2lf0?entry=ttu&g_ep=EgoyMDI2MTExMC4wIKXMDSoASAFQAw%3D%3D" + encodeURIComponent(CONFIG.mapsQuery) + "&output=embed";
 $("#routeBtn").href = CONFIG.mapsLink;
 $("#cTel").href = "tel:" + CONFIG.telp; $("#fTelBtn").href = "tel:" + CONFIG.telp; $("#telTxt").textContent = CONFIG.telp;
 $("#cWa1").href = waLink(CONFIG.wa1, "Halo Admin 1, saya ingin bertanya tentang kos."); 
