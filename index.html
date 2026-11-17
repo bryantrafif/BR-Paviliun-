@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kos Nusantara Residence – Kos Rasa Apartemen</title>
-<meta name="description" content="Kos putri eksklusif dekat kampus & pusat kuliner. Cek kamar kosong, harga transparan, tur video, dan booking via WhatsApp.">
+<title>BR Paviliun – Paviliun Untuk Umum</title>
+<meta name="description" content="Paviliun untuk umum dekat kampus & pusat kuliner. Cek kamar kosong, harga transparan, tur video, dan booking via WhatsApp.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -193,7 +193,7 @@ footer{background:#052e2b;color:#99b8b4;text-align:center;padding:24px 0;font-si
   <div class="container nav">
     <a href="#beranda" class="logo">
       <div class="logo-mark">🏠</div>
-      <div><span id="brandName">BR Paviliun</span> <span class="badge-cat" id="brandCat">Paviliun Umum </span></div>
+      <div><span id="brandName">Kos Nusantara</span> <span class="badge-cat" id="brandCat">Kos Putri Eksklusif</span></div>
     </a>
     <nav class="menu" id="menu">
       <a href="#beranda" data-i18n="nav_home">Beranda</a>
@@ -325,6 +325,7 @@ footer{background:#052e2b;color:#99b8b4;text-align:center;padding:24px 0;font-si
 <section id="lokasi">
   <div class="container">
     <div class="sec-head reveal"><span class="eyebrow">Lokasi</span><h2 data-i18n="loc_h">Strategis & Mudah Dijangkau</h2><p id="alamat"></p></div>
+    <div class="tabs reveal" id="locTabs"></div>
     <div class="map-grid reveal">
       <div class="map-box"><iframe id="mapFrame" title="Peta Lokasi" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
       <div class="card poi">
@@ -403,17 +404,18 @@ footer{background:#052e2b;color:#99b8b4;text-align:center;padding:24px 0;font-si
 <script>
 /* ============ KONFIGURASI – EDIT BAGIAN INI ============ */
 const CONFIG = {
-  nama: "Kos Nusantara Residence",
-  kategori: "Kos Putri Eksklusif",
+  nama: "BR Paviliun",
+  kategori: "Paviliun Untuk Umum",
   wa1: "6281234567890",           // format internasional tanpa + atau 0 di depan
   wa2: "6281234567891",
   telp: "081234567890",
   email: "info@kosnusantara.id",
   instagram: "https://instagram.com/kosnusantara",
   tiktok: "https://tiktok.com/@kosnusantara",
-  alamat: "Jl. Contoh No. 12, Kelurahan Anda, Kota Anda",
-  mapsQuery: "Jl. Contoh No. 12",  // atau alamat/koordinat sebenarnya
-  mapsLink: "https://www.google.com/maps/place/PAVILIUN+BRYANT/@-7.7530733,110.3560153,17.61z/data=!4m6!3m5!1s0x2e7a59ac16e72f29:0xd63352789cba7074!8m2!3d-7.7550299!4d110.3562119!16s%2Fg%2F11vb__ywq9?entry=ttu&g_ep=EgoyMDI2MTExMC4wIKXMDSoASAFQAw%3D%3D",
+  lokasi: [
+    { nama:"Paviliun Arif Romdhon", lat:-7.7559051, lng:110.3555642 },
+    { nama:"Paviliun Bryant",       lat:-7.7550299, lng:110.3562119 }
+  ],
   videoEmbed: "https://www.youtube.com/embed/dQw4w9WgXcQ", // ganti dengan ID video tur kos Anda
   panoImage: "",                   // URL foto panorama 360° (opsional)
   heroImages: [],                  // isi URL foto hero; kosong = gradien bawaan
@@ -476,10 +478,22 @@ $("#brandName").textContent = CONFIG.nama;
 $("#brandCat").textContent = CONFIG.kategori;
 $("#ftName").textContent = CONFIG.nama;
 $("#yr").textContent = new Date().getFullYear();
-$("#alamat").textContent = CONFIG.alamat;
 $("#videoFrame").src = CONFIG.videoEmbed;
-$("#mapFrame").src = "https://www.google.com/maps/place/Paviliun+Arif+Romdhon/@-7.7560213,110.3554467,21z/data=!4m6!3m5!1s0x2e7a585ff07b83cb:0x5f749f2ba543333b!8m2!3d-7.7559051!4d110.3555642!16s%2Fg%2F11g6qt2lf0?entry=ttu&g_ep=EgoyMDI2MTExMC4wIKXMDSoASAFQAw%3D%3D" + encodeURIComponent(CONFIG.mapsQuery) + "&output=embed";
-$("#routeBtn").href = CONFIG.mapsLink;
+
+/* Peta: 2 lokasi, bisa dipilih lewat tab */
+$("#locTabs").innerHTML = CONFIG.lokasi.map((l,i) => `<button class="tab ${i===0?'active':''}" data-i="${i}">📍 ${l.nama}</button>`).join("");
+function setLokasi(i){
+  const l = CONFIG.lokasi[i];
+  $("#alamat").textContent = l.nama;
+  $("#mapFrame").src = `https://www.google.com/maps?q=${l.lat},${l.lng}(${encodeURIComponent(l.nama)})&z=18&output=embed`;
+  $("#routeBtn").href = `https://www.google.com/maps/dir/?api=1&destination=${l.lat},${l.lng}`;
+}
+$("#locTabs").addEventListener("click", e => {
+  const b = e.target.closest(".tab"); if (!b) return;
+  document.querySelectorAll("#locTabs .tab").forEach(t => t.classList.remove("active")); b.classList.add("active");
+  setLokasi(+b.dataset.i);
+});
+setLokasi(0);
 $("#cTel").href = "tel:" + CONFIG.telp; $("#fTelBtn").href = "tel:" + CONFIG.telp; $("#telTxt").textContent = CONFIG.telp;
 $("#cWa1").href = waLink(CONFIG.wa1, "Halo Admin 1, saya ingin bertanya tentang kos."); 
 $("#cWa2").href = waLink(CONFIG.wa2, "Halo Admin 2, saya ingin bertanya tentang kos.");
